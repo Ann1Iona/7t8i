@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<style type="text/css">
+		.loc1 {
+			display: none;
+			background-image: url(-.jpg_q50.jpg);
+			background-size: 100% 100%;
+			height: 650px;
+			text-align: center;
+		}
+		.awen {
+			height: 50px;
+			background: pink;
+		}
+		.ff {
+			font-family: cursive;
+		}
+		.loc2 {
+			display: none;
+			background-image: url(45bf9989ee5dbf2ca1ad10d90664be09.jpg);
+			background-size: 100% 100%;
+			height: 650px;
+		}
+		.player {
+			height: 200px;
+			width: 200px;
+			background-image: url(PicsArt_05-28-09.38.52.png);
+			background-size: 100% 100%;
+			position: absolute;
+			transition:  0.4s;
+			top: 400px;
+			left: 100px;
+		}
+		.run {
+			position: absolute;
+			left: 0px;
+			top: 610px;
+		}
+
+		.body {
+			font-family: cursive;
+		}
+	</style>
+</head>
+<bod class="body">
+	<h1 style="display: none; color: white; position: absolute; top: 300px; left: 600px;" class="fank">Спасибо за игру</h1>
+	
+	<div class="rod" style="background-image: url(bg.jpg); background-size: 100% 100%; height: 650px;">
+		<div style="display: flex;">
+			<div style="height: 100px; width: 200px; background-size: 100px 100px; background-image: url(PicsArt_05-28-09.40.57.png); display: none;" class="bun">
+				
+			</div>
+			<div style="height: 100px; width: 200px; background-size: 100px 100px; background-image: url(PicsArt_05-28-09.42.14.png); display: none;" class="copy">
+				
+			</div>
+		</div>
+		<div style="width: 250px; height: 250px; background: pink; position: absolute; top: 300px; left: 100px;" class="classr">
+			<h1 style="text-align: center; font-family: cursive; color: white;" class="ff">Класс</h1>
+		</div>
+		<div style="width: 250px; height: 250px; background: blue; position: absolute; top: 300px; left: 900px;" class="stolovaya">
+			<h1 style="text-align: center; font-family: cursive; color: white;" class="ff">Столовая</h1>
+		</div>
+	</div>
+	<div class="loc1 col-12">
+		<div style="color: white;" class="mx-auto pt-2">
+			<h2 class="question ff" style="margin-top: 230px; margin-right: 350px;"></h2>
+		</div>
+		<div class="mx-auto" style="width: 700px;">
+			<div class="row" style="margin-top: 200px;">
+				<div class="awen ml-2 col-2 border border-white">
+					<h1 class="awens ff"></h1>
+				</div>
+				<div class="awen ml-2 col-2 border border-white">
+					<h1 class="awens ff"></h1>
+				</div>
+				<div class="awen ml-2 col-2 border border-white">
+					<h1 class="awens ff"></h1>
+				</div>
+			</div>
+		</div>
+		<div style="position: absolute; top: 600px; ">
+		<button class="btn ff shpora" style="background: pink;">Шпора</button>
+		</div>
+	</div>
+	<div class="podskazka" style="display: none; background-image: url(PicsArt_05-28-09.28.56.jpg); background-size: 100% 100%; height: 650px;">
+		<h1 class="otvet" style="position: absolute; top: 300px; left: 600px;"></h1>
+		<button class="btn ff bg-primary back" style="color: white">back</button>
+	</div>
+	<div class="loc2 ff">
+		<h1 style="color: white;">Время : <span class="tim"></span></h1>
+		<div class="player">
+		</div>
+		<div class="run">
+			<button class="btn running bg-primary" style="color: white;">Беги!!!</button>
+		</div>
+	</div>
+	<script type="text/javascript">
+		let stolovaya = document.querySelector(".stolovaya");
+		let classr = document.querySelector(".classr");
+		let rod = document.querySelector(".rod");
+		let body = document.querySelector(".body");
+		let bun = document.querySelector(".bun");
+		let copy = document.querySelector(".copy");
+		let bu = 0;
+		let cop = 0;
+		let fank = document.querySelector(".fank");
+		
+		let loc1 = document.querySelector(".loc1");
+		let question = document.querySelector(".question");
+		let awens = document.querySelectorAll(".awens");
+		let shpora = document.querySelector(".shpora");
+		let podskazka = document.querySelector(".podskazka");
+		let otvet = document.querySelector(".otvet");
+		let back = document.querySelector(".back");
+		let mark = 2;
+
+		let loc2 = document.querySelector(".loc2");
+		let tim = document.querySelector(".tim");
+		let running = document.querySelector(".running");
+		let player = document.querySelector(".player");
+		let time = 10;
+		let lefty = 100;
+
+		let ques = [
+			"В каком году был принят табель о рангах?",
+			"Сколько оболочек имеет глазное яблоко?",
+			"I'll have to put ... your names.",
+
+		]
+
+		let right = [
+			"1722",
+			"три",
+			"down",
+
+		]
+
+		let fale = [
+			"1834",
+			"1730",
+			"два",
+			"одну",
+			"off",
+			"up",	
+		]
+
+
+		stolovaya.onclick = function(){
+			rod.style.display = "none";
+			loc2.style.display = "block";
+			alert("Беги за последней булочкой!!!");
+			alert("У тебя есть 10 секунд что бы успеть добежать до столовой и купить последнюю булочку, ведь иначе это сделают противные младшеклассники");
+			tim.innerHTML = time;
+			let chechTime = function() {
+				time = time - 1;
+				tim.innerHTML = time;
+				if (time == 0){
+					clearInterval(stop)
+				}
+				running.onclick = function(){
+					lefty = lefty + 50;
+					player.style.left = lefty + "px";
+				}
+				let lef = function(){
+					if (lefty == 1200) {
+						alert("Поздравляю, поделишься булочкой???");
+						loc2.style.display = "none";
+						rod.style.display = "block";
+						stolovaya.style.display = "none";
+						clearInterval(set);
+						bun.style.display = "block";
+						bu = bu + 1;
+					}
+				}
+				
+				let set = setInterval(lef, 1000);
+			}
+			let stop = setInterval(chechTime, 1000);
+			let check = function() {
+				if (lefty < 1200){
+					alert("Жаль, но булочка досталась не тебе");
+					loc2.style.display = "none";
+					rod.style.display = "block";
+					stolovaya.style.display = "none";
+				}
+			}
+			setTimeout(check, 10000)
+		}
+		classr.onclick = function(){
+			rod.style.display = "none";
+			loc1.style.display = "block";
+			alert("Умудрись верно сдать тест");
+			question.innerHTML = ques[0];
+			awens[0].innerHTML = right[0];
+			awens[1].innerHTML = fale[0];
+			awens[2].innerHTML = fale[1];
+			shpora.onclick = function() {
+			alert("Можно выйти?")
+				loc1.style.display = "none";
+				podskazka.style.display = "block";
+				otvet.innerHTML = right[0];
+				back.onclick = function() {
+					loc1.style.display = "block";
+					podskazka.style.display = "none";
+					shpora.style.display = "none";
+				}
+			}
+			awens[0].onclick = function() {
+				mark = mark + 1;
+				alert("Правильно, продолжай");
+				question.innerHTML = ques[1];
+				awens[2].innerHTML = right[1];
+				awens[1].innerHTML = fale[2];
+				awens[0].innerHTML = fale[3];
+				shpora.onclick = function() {
+				alert("Можно выйти?")
+				loc1.style.display = "none";
+				podskazka.style.display = "block";
+				otvet.innerHTML = right[1];
+				back.onclick = function() {
+					loc1.style.display = "block";
+					podskazka.style.display = "none";
+					shpora.style.display = "none";
+				}
+			}				
+				awens[2].onclick = function() {
+					mark = mark + 1;
+					alert("Правильно, продолжай");
+					question.innerHTML = ques[2];
+					awens[1].innerHTML = right[2];
+					awens[0].innerHTML = fale[4];
+					awens[2].innerHTML = fale[5];
+					shpora.onclick = function() {
+					alert("Можно выйти?")
+					loc1.style.display = "none";
+					podskazka.style.display = "block";
+					otvet.innerHTML = right[2];
+					back.onclick = function() {
+						loc1.style.display = "block";
+						podskazka.style.display = "none";
+						shpora.style.display = "none";
+					}
+				}
+					awens[1].onclick = function() {	
+						mark = mark + 1;
+						alert("Правильно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+					}
+					awens[2].onclick = function() {	
+						alert("Не верно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+					}
+					awens[0].onclick = function() {	
+						alert("Не верно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+					}
+				/*Неверный ответ 1*/
+				awens[1].onclick = function() {		
+					alert("Серьёзно!? Ладно продолжай...");
+					question.innerHTML = ques[2];
+					awens[1].innerHTML = right[2];
+					awens[0].innerHTML = fale[4];
+					awens[2].innerHTML = fale[5];
+					shpora.onclick = function() {
+					alert("Можно выйти?")
+					loc1.style.display = "none";
+					podskazka.style.display = "block";
+					otvet.innerHTML = right[2];
+					back.onclick = function() {
+						loc1.style.display = "block";
+						podskazka.style.display = "none";
+						shpora.style.display = "none";
+					}
+				}
+					awens[1].onclick = function() {	
+						mark = mark + 1;
+						alert("Правильно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+					awens[2].onclick = function() {	
+						alert("Не верно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+					awens[0].onclick = function() {	
+						alert("Не верно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+				}
+				/*Неверный ответ 2*/
+				awens[0].onclick = function() {
+					alert("Серьёзно!? Ладно продолжай...");
+					question.innerHTML = ques[2];
+					awens[1].innerHTML = right[2];
+					awens[0].innerHTML = fale[4];
+					awens[2].innerHTML = fale[5];
+					shpora.onclick = function() {
+					alert("Можно выйти?")
+					loc1.style.display = "none";
+					podskazka.style.display = "block";
+					otvet.innerHTML = right[2];
+					back.onclick = function() {
+						loc1.style.display = "block";
+						podskazka.style.display = "none";
+						shpora.style.display = "none";
+					}
+				}
+					awens[1].onclick = function() {	
+						mark = mark + 1;
+						alert("Правильно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+					awens[2].onclick = function() {	
+						alert("Не верно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+					awens[0].onclick = function() {	
+						alert("Не верно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+				}
+			}
+			/*Неверный ответ 1*/
+			awens[1].onclick = function() {	
+				alert("Серьёзно!? Ладно продолжай...");
+				question.innerHTML = ques[1];
+				awens[2].innerHTML = right[1];
+				awens[1].innerHTML = fale[2];
+				awens[0].innerHTML = fale[3];
+				shpora.onclick = function() {
+				alert("Можно выйти?")
+				loc1.style.display = "none";
+				podskazka.style.display = "block";
+				otvet.innerHTML = right[1];
+				back.onclick = function() {
+					loc1.style.display = "block";
+					podskazka.style.display = "none";
+					shpora.style.display = "none";
+				}
+			}
+				awens[2].onclick = function() {
+					mark = mark + 1;
+					alert("Правильно, продолжай");
+					question.innerHTML = ques[2];
+					awens[1].innerHTML = right[2];
+					awens[0].innerHTML = fale[4];
+					awens[2].innerHTML = fale[5];
+					shpora.onclick = function() {
+					alert("Можно выйти?")
+					loc1.style.display = "none";
+					podskazka.style.display = "block";
+					otvet.innerHTML = right[2];
+					back.onclick = function() {
+						loc1.style.display = "block";
+						podskazka.style.display = "none";
+						shpora.style.display = "none";
+					}
+				}
+					awens[1].onclick = function() {	
+						mark = mark + 1;
+						alert("Правильно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+					awens[2].onclick = function() {	
+						alert("Не верно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+					awens[0].onclick = function() {	
+						alert("Не верно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+				}
+				/*Неверный ответ 1*/
+				awens[1].onclick = function() {		
+					alert("Серьёзно!? Ладно продолжай...");
+					question.innerHTML = ques[2];
+					awens[1].innerHTML = right[2];
+					awens[0].innerHTML = fale[4];
+					awens[2].innerHTML = fale[5];
+					shpora.onclick = function() {
+					alert("Можно выйти?")
+					loc1.style.display = "none";
+					podskazka.style.display = "block";
+					otvet.innerHTML = right[2];
+					back.onclick = function() {
+						loc1.style.display = "block";
+						podskazka.style.display = "none";
+						shpora.style.display = "none";
+					}
+				}
+					awens[1].onclick = function() {	
+						mark = mark + 1;
+						alert("Правильно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+					awens[2].onclick = function() {	
+						alert("Не верно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+					awens[0].onclick = function() {	
+						alert("Не верно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+				}
+				/*Неверный ответ 2*/
+				awens[0].onclick = function() {		
+					alert("Серьёзно!? Ладно продолжай...");
+					question.innerHTML = ques[2];
+					awens[1].innerHTML = right[2];
+					awens[0].innerHTML = fale[4];
+					awens[2].innerHTML = fale[5];
+					shpora.onclick = function() {
+					alert("Можно выйти?")
+					loc1.style.display = "none";
+					podskazka.style.display = "block";
+					otvet.innerHTML = right[2];
+					back.onclick = function() {
+						loc1.style.display = "block";
+						podskazka.style.display = "none";
+						shpora.style.display = "none";
+					}
+				}
+					awens[1].onclick = function() {	
+						mark = mark + 1;
+						alert("Правильно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+					awens[2].onclick = function() {	
+						alert("Не верно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+					awens[0].onclick = function() {	
+						alert("Не верно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+				}
+			}
+			}
+			/*Неверный ответ 2*/
+			awens[2].onclick = function() {	
+				alert("Серьёзно!? Ладно продолжай...");
+				question.innerHTML = ques[1];
+				awens[2].innerHTML = right[1];
+				awens[1].innerHTML = fale[2];
+				awens[0].innerHTML = fale[3];
+				shpora.onclick = function() {
+				alert("Можно выйти?")
+				loc1.style.display = "none";
+				podskazka.style.display = "block";
+				otvet.innerHTML = right[1];
+				back.onclick = function() {
+					loc1.style.display = "block";
+					podskazka.style.display = "none";
+					shpora.style.display = "none";
+				}
+			}
+				awens[2].onclick = function() {
+					mark = mark + 1;
+					alert("Правильно, продолжай");
+					question.innerHTML = ques[2];
+					awens[1].innerHTML = right[2];
+					awens[0].innerHTML = fale[4];
+					awens[2].innerHTML = fale[5];
+					shpora.onclick = function() {
+					alert("Можно выйти?")
+					loc1.style.display = "none";
+					podskazka.style.display = "block";
+					otvet.innerHTML = right[2];
+					back.onclick = function() {
+						loc1.style.display = "block";
+						podskazka.style.display = "none";
+						shpora.style.display = "none";
+					}
+				}
+					awens[1].onclick = function() {	
+						mark = mark + 1;
+						alert("Правильно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+					awens[2].onclick = function() {	
+						alert("Не верно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+					awens[0].onclick = function() {	
+						alert("Не верно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+					
+				}
+				/*Неверный ответ 1*/
+				awens[1].onclick = function() {		
+					alert("Серьёзно!? Ладно продолжай...");
+					question.innerHTML = ques[2];
+					awens[1].innerHTML = right[2];
+					awens[0].innerHTML = fale[4];
+					awens[2].innerHTML = fale[5];
+					shpora.onclick = function() {
+					alert("Можно выйти?")
+					loc1.style.display = "none";
+					podskazka.style.display = "block";
+					otvet.innerHTML = right[2];
+					back.onclick = function() {
+						loc1.style.display = "block";
+						podskazka.style.display = "none";
+						shpora.style.display = "none";
+					}
+				}
+					awens[1].onclick = function() {	
+						mark = mark + 1;
+						alert("Правильно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+					awens[2].onclick = function() {	
+						alert("Не верно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+					awens[0].onclick = function() {	
+						alert("Не верно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+				}
+				/*Неверный ответ 2*/
+				awens[0].onclick = function() {		
+					alert("Серьёзно!? Ладно продолжай...");
+					question.innerHTML = ques[2];
+					awens[1].innerHTML = right[2];
+					awens[0].innerHTML = fale[4];
+					awens[2].innerHTML = fale[5];
+					shpora.onclick = function() {
+					alert("Можно выйти?")
+					loc1.style.display = "none";
+					podskazka.style.display = "block";
+					otvet.innerHTML = right[2];
+					back.onclick = function() {
+						loc1.style.display = "block";
+						podskazka.style.display = "none";
+						shpora.style.display = "none";
+					}
+				}
+					awens[1].onclick = function() {	
+						mark = mark + 1;
+						alert("Правильно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+					awens[2].onclick = function() {	
+						alert("Не верно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+					awens[0].onclick = function() {	
+						alert("Не верно");
+						alert("Твоя оценка : " + mark);
+						copy.style.display = "block";
+						cop = cop + 1;
+						loc1.style.display = "none";
+						rod.style.display = "block";
+						classr.style.display = "none";
+					}
+				}
+			}
+		}
+		let end = function() {
+			if (bu == 1) {
+				if (cop == 1) {
+					body.style.backgroundImage = "url(g742778.jpg)";
+					body.style.backgroundSize = "100% 100%";
+					fank.style.display = "block";
+					
+				}
+			}
+		}
+		setInterval(end, 1000)
+	</script>
+</body>
+</html>
